@@ -13,11 +13,11 @@ import ui.pageactions.LoginPageActions;
 
 import static utils.RandomString.randomString;
 
-public class LoginTests {
+public class LoginTests extends BaseTest{
     private static final String USERNAME = "test" + randomString;
     private static final String PASSWORD = "test123!";
     UserRequestsFlow userSteps = new UserRequestsFlow();
-    private String userId;
+    private Integer userId;
 
     @BeforeMethod
     public void prepareUserForLogin() {

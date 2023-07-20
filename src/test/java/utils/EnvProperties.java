@@ -10,6 +10,7 @@ import static java.util.Objects.isNull;
 public class EnvProperties {
     private static final String PATH_TO_RESOURCE = "src/test/resources/";
     private static final String PROPERTIES_FILE_NAME = "env.properties";
+    public static final Integer ADMIN_USER_ID = 36;
     public static final String API_URL = propertyValue(PATH_TO_RESOURCE, PROPERTIES_FILE_NAME, "apiUrl");
     public static final String BASE_URL = propertyValue(PATH_TO_RESOURCE, PROPERTIES_FILE_NAME, "baseUrl");
     public static final String API_USERNAME = propertyValue(PATH_TO_RESOURCE, PROPERTIES_FILE_NAME, "username");

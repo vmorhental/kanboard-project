@@ -1,13 +1,15 @@
 package api.requestflows;
 
 
+import api.objects.ProjectId;
 import api.requestBodies.CreateProjectRequestBody;
 import api.requestBodies.GeneralRequestBody;
+import api.requestBodies.LinkProjectToUserRequestBody;
 import api.responseBodies.Result;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
-import static api.methods.MethodsForProjectsRequests.CREATE_PROJECT;
+import static api.methods.MethodsForProjectsRequests.*;
 import static utils.EnvProperties.API_TOKEN;
 import static utils.EnvProperties.API_USERNAME;
 
@@ -29,5 +31,30 @@ public class ProjectRequestsFlow extends BasicPostRequest {
         response.then().statusCode(200);
         Integer id = (Integer) response.as(Result.class).getResult();
         return id;
+    }
+    @Step("link user {0} to project {1}")
+    public void linkProjectToCustomer(Integer userId, Integer projectId){
+        LinkProjectToUserRequestBody body = new LinkProjectToUserRequestBody().builder()
+                .project_id(projectId)
+                .user_id(userId)
+                .build();
+
+        GeneralRequestBody finalBody = GeneralRequestBody.builder()
+                .params(body)
+                .method(LINK_PROJECT_TO_USER)
+                .build();
+
+        Response response = postRequest(API_USERNAME, API_TOKEN, finalBody);
+        response.then().statusCode(200);
+    }
+    @Step("We remove project with id - {0}")
+    public boolean removeProject(Integer removeProjectId){
+        GeneralRequestBody body = GeneralRequestBody.builder()
+                .params(new ProjectId(removeProjectId))
+                .method(REMOVE_PROJECT)
+                .build();
+        Response response = postRequest(API_USERNAME,API_TOKEN,body);
+        response.then().statusCode(200);
+        return (boolean) response.as(Result.class).getResult();
     }
 }
