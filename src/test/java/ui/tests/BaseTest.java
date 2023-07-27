@@ -8,20 +8,21 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
+import utils.EnvProperties;
 
 import static utils.EnvProperties.BASE_URL;
 
 public class BaseTest {
     @BeforeMethod
     public void setUp() {
-        String browser = System.getProperty("browser");
-        String headless = System.getProperty("headless");
-        Configuration.browser = browser;
+        EnvProperties.setupInstance(System.getProperty("instanceName"," "));
         Configuration.baseUrl = BASE_URL;
+        String browser = System.getProperty("browser", "chrome");
+        String headless = System.getProperty("headless", "false");
+        Configuration.browser = browser;
         if (headless.equals("true")) {
             Configuration.headless = true;
-        }
-        else Configuration.headless = false;
+        } else Configuration.headless = false;
     }
 //    @Parameters ("instanceName")
 //    @BeforeTest

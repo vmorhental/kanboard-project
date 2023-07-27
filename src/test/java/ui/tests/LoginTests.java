@@ -22,7 +22,7 @@ public class LoginTests extends BaseTest{
     @BeforeMethod
     public void prepareUserForLogin() {
         userId = userSteps.createRegularUser(USERNAME, PASSWORD);
-        System.out.println(userId);
+        System.out.println("User is created with id " + userId);
     }
 
     @Test

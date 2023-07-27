@@ -29,11 +29,11 @@ public class TaskCommentTest extends BaseTest {
     @BeforeMethod
     public void prepareTestData() {
         userId = userSteps.createRegularUser(USERNAME, PASSWORD);
-        System.out.println(userId);
+        System.out.println("User is created with id " + userId);
         projectId = projectSteps.createProject("ValeriiTest", "Test description", Integer.valueOf(userId));
-        System.out.println(projectId);
+        System.out.println("Project is created with id " + projectId);
         taskId = taskSteps.createTaskForCreatedProject(projectId, TASK_TITLE);
-        System.out.println(taskId);
+        System.out.println("Task is created with id " + taskId);
         projectSteps.linkProjectToCustomer(userId, projectId);
     }
 

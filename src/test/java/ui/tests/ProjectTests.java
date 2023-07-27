@@ -27,9 +27,9 @@ public class ProjectTests extends BaseTest{
     @BeforeMethod
     public void prepareUserForLogin() {
         userId = userSteps.createRegularUser(USERNAME, PASSWORD);
-        System.out.println(userId);
+        System.out.println("User is created with id " + userId);
         projectId = projectSteps.createProject("ValeriiTest", "Test description", Integer.valueOf(userId));
-        System.out.println(projectId);
+        System.out.println("Project is created with id " + projectId);
         projectSteps.linkProjectToCustomer(userId,projectId);
     }
 
@@ -38,7 +38,7 @@ public class ProjectTests extends BaseTest{
     public void createProjectTest(){
         SelenideElement actualProjectName = new LoginPageActions()
                 .openLoginPage()
-                .loginByUser(ADMIN_USERNAME, ADMIN_PASSWORD)
+                .loginByUser(USERNAME, PASSWORD)
                 .createProject(PROJECT_NAME)
                 .getCreatedProjectName();
         actualProjectName.shouldBe(Condition.visible);
