@@ -13,4 +13,6 @@
   #### mvn clean test -PFull_run
 - To run for kanban1 cloud please use in all commands
   ####  -DinstanceName="kanban1"
-- Localhost env is used as default one to use, all properties are in env.properties file in recources folder
+- Please check other profiles in POM file to run specific functionality tests
+- Jenkins job is set up to be run everyday at 08:00 A.M. - cron command 0 8 * * * , localy with profile Full_run 
+- Localhost env is used as default one to use, all properties are in env.properties file in resources folder
