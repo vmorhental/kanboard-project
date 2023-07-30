@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import ui.models.LoginPage;
 import ui.pageactions.LoginPageActions;
 
+import static utils.EnvProperties.BASE_URL;
 import static utils.RandomString.randomString;
 
 public class LoginTests extends BaseTest{
@@ -32,7 +33,8 @@ public class LoginTests extends BaseTest{
                 .openLoginPage()
                 .loginByUser(USERNAME, PASSWORD);
         String currentUrl = WebDriverRunner.getWebDriver().getCurrentUrl();
-        Assert.assertEquals(currentUrl, "http://localhost/", "Login is unsuccessful");
+        String expectedUrl = BASE_URL + "/";
+        Assert.assertEquals(currentUrl, expectedUrl, "Login is unsuccessful");
     }
 
     @Test
@@ -43,7 +45,8 @@ public class LoginTests extends BaseTest{
                 .openLoginPage()
                 .loginByUser("incorrectUsername", PASSWORD);
         String currentUrl = WebDriverRunner.getWebDriver().getCurrentUrl();
-        Assert.assertEquals(currentUrl, "http://localhost/?controller=AuthController&action=check", "incorrect username is valid");
+        String expectedUrl = BASE_URL + "/?controller=AuthController&action=check";
+        Assert.assertEquals(currentUrl, expectedUrl, "incorrect username is valid");
     }
 
     @Test
@@ -54,7 +57,8 @@ public class LoginTests extends BaseTest{
                 .openLoginPage()
                 .loginByUser(USERNAME, "incorrectPassword");
         String currentUrl = WebDriverRunner.getWebDriver().getCurrentUrl();
-        Assert.assertEquals(currentUrl, "http://localhost/?controller=AuthController&action=check", "incorrect password is valid");
+        String expectedUrl = BASE_URL + "/?controller=AuthController&action=check";
+        Assert.assertEquals(currentUrl, expectedUrl, "incorrect password is valid");
     }
 
     @AfterMethod (alwaysRun = true)

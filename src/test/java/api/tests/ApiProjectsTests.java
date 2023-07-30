@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 import static utils.EnvProperties.ADMIN_USER_ID;
 
-public class ApiProjectsTests {
+public class ApiProjectsTests extends BaseApiTest{
     ProjectRequestsFlow projectRequestsSteps = new ProjectRequestsFlow();
     @Test
     @Description("This test checks that project can be created via API")

@@ -6,7 +6,7 @@ import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class ApiTaskTests {
+public class ApiTaskTests extends BaseApiTest{
     TaskRequestFlow taskRequestsSteps = new TaskRequestFlow();
 
     @Test
