@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="UI tests suite">
+    <test name="User login Tests">
+        <classes>
+            <class name="ui.tests.LoginTests"/>
+        </classes>
+    </test>
+    <test name="Project actions Tests">
+        <classes>
+            <class name="ui.tests.ProjectTests"/>
+        </classes>
+    </test>
+    <test name="Task actions Tests">
+        <classes>
+            <class name="ui.tests.TaskCloseTest"/>
+            <class name="ui.tests.TaskCommentTest"/>
+        </classes>
+    </test>
+</suite>

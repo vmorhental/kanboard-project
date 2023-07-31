@@ -1,0 +1,6 @@
+/docker-compose.yaml
+/.idea/
+/target/
+/src/main/
+/build/
+/allure-results/

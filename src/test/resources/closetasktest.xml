@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="UI tests suite">
+    <test name="UI Test for closing Task">
+        <classes>
+            <class name="ui.tests.TaskCloseTest"/>
+        </classes>
+    </test>
+</suite>
